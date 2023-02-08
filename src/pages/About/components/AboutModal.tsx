@@ -10,7 +10,7 @@ const AboutModal = () => {
     alert(message);
   };
 
-  const onClose = () => {
+  const onConfirm = () => {
     dispatch(setModalVisible(false));
   };
   return (
@@ -21,7 +21,7 @@ const AboutModal = () => {
         <button onClick={() => doAlertWithMessage(value)}>
           적은 메시지로 경고창 띄우기
         </button>
-        <button onClick={onClose}>모달 끄기</button>
+        <button onClick={onConfirm}>모달 끄기</button>
       </div>
     </div>
   );

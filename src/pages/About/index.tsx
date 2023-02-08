@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { getAPI } from '../../common/api/sample';
 import { setOpenModal } from '../../common/slices/modalSlice';
 
 const About: React.FC = () => {
@@ -8,6 +9,23 @@ const About: React.FC = () => {
   const openModal = () => {
     dispatch(setOpenModal('ABOUT_MODAL'));
   };
+
+  const onSuccess = (data: string) => {
+    dispatch(setOpenModal('API_SUCCESS_MODAL'));
+    console.log('api data', data);
+  };
+
+  const onError = (message: string) => {
+    dispatch(setOpenModal('API_FAIL_MODAL'));
+    console.log('error message', message);
+  };
+  useEffect(() => {
+    getAPI({
+      path: 'success는 아님',
+      onSuccess,
+      onError,
+    });
+  });
 
   return (
     <div>
